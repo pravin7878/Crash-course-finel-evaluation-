@@ -5,7 +5,7 @@ import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Text, Divider, 
 
 
 export default function ProductCard({ ...data }) {
-  console.log(data);
+  // console.log(data);
 
   const { id, title, image, category, price } = data
   return (
