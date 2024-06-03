@@ -4,17 +4,18 @@ import { Link } from 'react-router-dom'
 import { Authcontext } from '../Context/Authcontext'
 
 export default function Nevbar() {
-    let { authState : {isAuthenticated,email} } = useContext(Authcontext)
+    let { authState : {isAuthenticated,email},logOut } = useContext(Authcontext)
    
     return (
-        <Flex py={10} px={5} bg={'lightblue'} justifyContent={'space-between'}>
+        <Flex py={10} px={5} bg={'lightblue'} justifyContent={'space-around'}>
             <HStack >
                 <Text>{isAuthenticated ? email : "Please Login Now"}</Text>
             </HStack>
-            <HStack spacing={10}>
+            <HStack spacing={10} >
                 <Link to={'/'}>Home</Link>
-                <Link to={'/login'}>login</Link>
-                <Button >Logout</Button>
+                {isAuthenticated ? <Button onClick={logOut}>Logout</Button> :
+                <Link to={'/login'}>login</Link>}
+                
             </HStack>
         </Flex>
     )
